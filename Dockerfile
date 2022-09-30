@@ -8,4 +8,4 @@ RUN apk update && apk add nmap
 
 COPY . .
 
-CMD [ "python", "./test.py" ]
+CMD [ "pytest", "./test.py" ]
