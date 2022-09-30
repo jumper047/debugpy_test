@@ -1,10 +1,13 @@
-a = 5
+import pytest
 
-print("Before attach")
-import debugpy
-debugpy.listen(("0.0.0.0", 3000))
-debugpy.wait_for_client()
-print("After attach")
-breakpoint()
+@pytest.fixture(autouse=True)
+def debug():
+    import debugpy
+    debugpy.listen(("0.0.0.0", 3000))
+    debugpy.wait_for_client()
+    debugpy.breakpoint()
+    print("You shall [not] pass!")
 
-c = 5
+
+def test_test():
+    assert True
